@@ -136,6 +136,7 @@ public class JeopardyDriver {
 	
 	public static void rules()
     {
+		header();
 		System.out.println("Hit -1 enter key -1 enter key to quit");
 		System.out.println("Enter the cordinates of the question you want to play enter question: X enter key Y enter key.");
     }
