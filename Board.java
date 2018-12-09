@@ -93,26 +93,29 @@ public class Board {
 		
 		for(int a = 0; a < cats.length; a++)
 		{
-			str += cats[a] + "\t";
+			if(cats[a].equals("Music"))
+				str += cats[a] + "  \t";
+			else
+				str += cats[a] + "\t";
 		}
 		
 		str += "\n\t";
 		
-		for(int a = 0; a < q[0].length; a++)
+		for(int s = 0; s < q[0].length; s++)
 		{
-			str += a + "\t";
+			str += s + "\t" + getLineSpacing(cats[s]); //add line spacing
 		}
 		
 		str += "\n";
 		
 		for(i = 0; i < q.length; i++)
 		{
-			str += i;
+			str += i + "\t";
 			for(c = 0; c < q[i].length; c++)
 			{
 				if(q[i][c] != null)
 				{
-					str += "\t" + q[i][c].toBoard();
+					str += q[i][c].toBoard() + "\t" + getLineSpacing(cats[c]);//add line spacing use c
 					if(q[i][c].isUsed())
 					{
 						used++;
@@ -122,13 +125,22 @@ public class Board {
 						}
 					}
 				}
-			
-			if(q[i][c] == null)
-				System.out.println("Null Found at" + i + ", " + c);
 			}
 			str += "\n";
 		}
 		return str;
 	}
 	
+	private String getLineSpacing(String str)
+	{
+		int l = str.length();
+		String out = "";
+		l = l-3;
+		for(int i =0; i < l; i++)
+		{
+			out += " ";
+		}
+		
+		return out;
+	}
 }

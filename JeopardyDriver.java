@@ -33,21 +33,28 @@ public class JeopardyDriver {
 			System.out.println(game);
 			
 			getCords();
-			
+					
 			if(x == -1 && y ==-1)
 			{
 				continuePlaying = false;
 			}
 			
-			else 
+			
+			else if(!(x == -1 && y ==-1) && continuePlaying)
 			{
 				playing = game.getQuestion(y, x);
+				System.out.println("Question: " + playing.getQuestion());
+			}
+			
+			else
+			{
+				continuePlaying = false;
 			}
 			
 			x = 0;
 			y = 0;
-					
-			if(!(playing.isUsed()))
+	
+			if(continuePlaying && playing.isUsed() != true && playing.isUsed() == false)
 			{
 				System.out.println(playing);
 				getAns();
@@ -56,7 +63,9 @@ public class JeopardyDriver {
 				playing = blank;
 			}
 			
-			if(playing.isUsed() && continuePlaying)
+			System.out.println();
+			
+			if((playing == null || playing.isUsed()) && continuePlaying)
 			{
 				System.out.println("Choose a diffrent question.");
 			}
@@ -74,26 +83,29 @@ public class JeopardyDriver {
 	public static void getCords()
 	{
 		System.out.println("Enter the X cordinate of the question:");
-		x = getInt();
+		int tx = getInt();
 		System.out.println("Enter the Y cordinate of the question:");
-		y = getInt();
-		if(x > game.getRow()-1)
+		int ty = getInt();
+		if(tx > game.getRow()-1)
 		{
-			while(x > game.getRow()-1)
+			while(tx > game.getRow()-1)
 			{
 				System.out.println("Enter the X cordinate of the question, between the values 0 and " + (game.getRow()-1) + ":");
-				x = getInt();
+				tx = getInt();
 			}	
 		}
 		
-		else if(y > game.getColumn()-1)
+		else if(ty > game.getColumn()-1)
 		{
-			while(y > game.getColumn()-1)
+			while(ty > game.getColumn()-1)
 			{
 				System.out.println("Enter the Y cordinate of the question, between the values 0 and " + (game.getColumn()-1) + ":");
-				y = getInt();
+				ty = getInt();
 			}	
 		}
+		
+		x = tx;
+		y = ty;
 	}
 	
 	public static void scoreboard()

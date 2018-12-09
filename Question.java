@@ -124,7 +124,10 @@ public class Question {
 	 * @return the isUsed
 	 */
 	public boolean isUsed() {
-		return isUsed;
+		if (question == null)
+			return true;
+		else
+			return isUsed;
 	}
 
 	//Pre-generated Methods
