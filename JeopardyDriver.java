@@ -18,6 +18,8 @@ public class JeopardyDriver {
 	public static int numOfPlayers, x, y;
 	public static boolean continuePlaying = true;
 	public static Question playing, blank;
+	public static boolean usedBoard = false;
+	public static int used = 0;
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		keyboard = new Scanner(System.in);
@@ -33,17 +35,16 @@ public class JeopardyDriver {
 			System.out.println(game);
 			
 			getCords();
-					
+						
 			if(x == -1 && y ==-1)
 			{
 				continuePlaying = false;
 			}
 			
-			
+						
 			else if(!(x == -1 && y ==-1) && continuePlaying)
 			{
 				playing = game.getQuestion(y, x);
-				System.out.println("Question: " + playing.getQuestion());
 			}
 			
 			else
@@ -54,29 +55,35 @@ public class JeopardyDriver {
 			x = 0;
 			y = 0;
 	
-			if(continuePlaying && playing.isUsed() != true && playing.isUsed() == false)
-			{
-				System.out.println(playing);
-				getAns();
-				playing.used();
-				scoreboard();
-				playing = blank;
-			}
-			
-			System.out.println();
-			
-			if((playing == null || playing.isUsed()) && continuePlaying)
+			if((playing == null || playing.isUsed()) && continuePlaying && usedBoard == false)
 			{
 				System.out.println("Choose a diffrent question.");
 			}
 			
-			if(game.usedBoard)
+			else if(continuePlaying && playing.isUsed() != true && playing.isUsed() == false)
+			{
+				System.out.print("\n" + playing);
+				getAns();
+				playing.used();
+				System.out.println("Correct Answer is: " + playing.getCorrectAns());
+				scoreboard();
+				playing = blank;
+				used++;
+			}
+			
+			if(used >= game.total)
+			{
+				continuePlaying = false;
+			}
+												
+			if(usedBoard)
 			{
 				continuePlaying = false;
 			}
 			
 		}
 		while(continuePlaying);
+		System.out.println("End Of Game:");
 		scoreboard();
 	}
 	
@@ -120,14 +127,15 @@ public class JeopardyDriver {
 	
 	public static void getAns()
     {		
+		String out ="";
 		for(int i = 0; i < numOfPlayers; i++)
 		{
-			System.out.println(players[i].getName() + ", your turn. Put in an answer:");
+			System.out.println("\n" + players[i].getName() + ", your turn. Put in an answer:");
 			int ans = getInt();
 			ans--;
-			System.out.println(playing.checkAnswer(ans, players[i]));
+			out +=  "\n" + playing.checkAnswer(ans, players[i]);
 		}
-		
+		System.out.println(out);
     }
 	
 	public static void userInput()
@@ -139,7 +147,7 @@ public class JeopardyDriver {
 		
 		for(int i = 0; i < numOfPlayers; i++)
 		{
-			System.out.println("\nName of Player " + 1 + ":");
+			System.out.println("\nName of Player " + (i + 1) + ":");
 			String n = keyboard.nextLine();
 			players[i] = new Player(n);
 		}
@@ -155,6 +163,7 @@ public class JeopardyDriver {
 	
 	public static void header()
 	{
+		System.out.println("\f");
 		System.out.println("    /$$$$$                                                         /$$          \r\n" + 
 				"   |__  $$                                                        | $$          \r\n" + 
 				"      | $$  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$$ /$$   /$$\r\n" + 

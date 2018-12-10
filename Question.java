@@ -94,7 +94,7 @@ public class Question {
 	{
 		if (question == null)
 			return "";
-		String out = question + "\n\n";
+		String out = "Value: $" + value  + "\n" + question + "\n\n";
 		for(int i = 0; i < ansArray.length;i++)
 		{
 			out+= i+1 + ") " + ansArray[i] + "\n";
@@ -152,4 +152,10 @@ public class Question {
 		return ansArray;
 	}
 	
+	/**
+	 * @return the correctAns
+	 */
+	public String getCorrectAns() {
+		return correctAns;
+	}
 }
