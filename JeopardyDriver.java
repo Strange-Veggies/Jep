@@ -2,6 +2,7 @@ package jeopardyLab;
 
 
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -24,6 +25,7 @@ public class JeopardyDriver {
 	public static void main(String[] args) throws FileNotFoundException {
 		keyboard = new Scanner(System.in);
     	
+		//Try catch block
 		game = new Board("Questions.txt");
 		blank = new Question();
 		
@@ -70,14 +72,10 @@ public class JeopardyDriver {
 				playing = blank;
 				used++;
 			}
-			
-			if(used >= game.total)
+											
+			if(usedBoard || used >= game.total)
 			{
-				continuePlaying = false;
-			}
-												
-			if(usedBoard)
-			{
+				System.out.println("The Board Has Been Used!!!");
 				continuePlaying = false;
 			}
 			
@@ -85,10 +83,17 @@ public class JeopardyDriver {
 		while(continuePlaying);
 		System.out.println("End Of Game:");
 		scoreboard();
+		
+		Player winner = findHighestValue();
+		System.out.println("The person with the highest value is " + winner.getName() + " with $" + winner.getMoney());
 	}
 	
 	public static void getCords()
 	{
+		Random ran = new Random();
+		int indexRan =  ran.nextInt(players.length);
+		System.out.println("");
+		
 		System.out.println("Enter the X cordinate of the question:");
 		int tx = getInt();
 		System.out.println("Enter the Y cordinate of the question:");
@@ -176,6 +181,22 @@ public class JeopardyDriver {
 				"                              | $$                                    |  $$$$$$/\r\n" + 
 				"                              |__/                                     \\______/ ");
 		System.out.println();
+	}
+	
+	public static Player findHighestValue()
+	{
+		Player winner = null;
+		int max = players[0].getMoney();
+		
+		for(int i = 0; i < players.length; i++) 
+		{
+			if(max < players[i].getMoney())
+			{
+				winner = players[i];
+			}
+		}
+		
+		return winner;
 	}
 	
 	/**

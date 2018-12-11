@@ -119,6 +119,8 @@ public class Question {
 	{
 		this.isUsed = true;
 	}
+
+	//Pre-generated Methods
 	
 	/**
 	 * @return the isUsed
@@ -129,15 +131,7 @@ public class Question {
 		else
 			return isUsed;
 	}
-
-	//Pre-generated Methods
-	/**
-	 * @return the question
-	 */
-	public String getQuestion() {
-		return question;
-	}
-
+	
 	/**
 	 * @return the value
 	 */
@@ -145,13 +139,6 @@ public class Question {
 		return value;
 	}
 
-	/**
-	 * @return the ansArray
-	 */
-	public String[] getAnsArray() {
-		return ansArray;
-	}
-	
 	/**
 	 * @return the correctAns
 	 */

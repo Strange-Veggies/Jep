@@ -59,13 +59,19 @@ public class Board {
 		return out;
 	}
 	
-	//X cords
+	/**
+	 * 
+	 * @return int number of rows or the x cord
+	 */
 	public int getRow()
 	{
 		return q[0].length;
 	}
 	
-	//Y cords
+	/**
+	 * 
+	 * @return int number of columns or the y cord
+	 */
 	public int getColumn()
 	{
 		return q.length;
