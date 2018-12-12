@@ -120,7 +120,7 @@ public class JeopardyDriver {
 			}	
 		}
 		
-		else if(ty > game.getColumn()-1 && ty < -1)
+		if(ty > game.getColumn()-1 && ty < -1)
 		{
 			while(ty > game.getColumn()-1)
 			{
