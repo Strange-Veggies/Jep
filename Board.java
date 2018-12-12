@@ -14,17 +14,13 @@ public class Board {
 	private final int ROWS = 5;
 	private final int COLUMNS = 4;
 	private Question[][] q = new Question[ROWS][COLUMNS];
-	public boolean usedBoard; 
-	private int total, used;
+	public int total = 0;
 	private String cat1,cat2,cat3,cat4;
 	
 	public Board(String file) throws FileNotFoundException
 	{
 		int column = 0;
-		usedBoard = false;
-		used = 0;
-		total = 0;
-		
+	
 		Scanner inF = new Scanner(new File(file));
 		
 		cat1 = inF.nextLine();
@@ -63,13 +59,19 @@ public class Board {
 		return out;
 	}
 	
-	//X cords
+	/**
+	 * 
+	 * @return int number of rows or the x cord
+	 */
 	public int getRow()
 	{
 		return q[0].length;
 	}
 	
-	//Y cords
+	/**
+	 * 
+	 * @return int number of columns or the y cord
+	 */
 	public int getColumn()
 	{
 		return q.length;
@@ -116,14 +118,6 @@ public class Board {
 				if(q[i][c] != null)
 				{
 					str += q[i][c].toBoard() + "\t" + getLineSpacing(cats[c]);//add line spacing use c
-					if(q[i][c].isUsed())
-					{
-						used++;
-						if(used == total)
-						{
-							usedBoard = true;
-						}
-					}
 				}
 			}
 			str += "\n";

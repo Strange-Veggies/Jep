@@ -94,7 +94,7 @@ public class Question {
 	{
 		if (question == null)
 			return "";
-		String out = question + "\n\n";
+		String out = "Value: $" + value  + "\n" + question + "\n\n";
 		for(int i = 0; i < ansArray.length;i++)
 		{
 			out+= i+1 + ") " + ansArray[i] + "\n";
@@ -119,6 +119,8 @@ public class Question {
 	{
 		this.isUsed = true;
 	}
+
+	//Pre-generated Methods
 	
 	/**
 	 * @return the isUsed
@@ -129,15 +131,7 @@ public class Question {
 		else
 			return isUsed;
 	}
-
-	//Pre-generated Methods
-	/**
-	 * @return the question
-	 */
-	public String getQuestion() {
-		return question;
-	}
-
+	
 	/**
 	 * @return the value
 	 */
@@ -146,10 +140,9 @@ public class Question {
 	}
 
 	/**
-	 * @return the ansArray
+	 * @return the correctAns
 	 */
-	public String[] getAnsArray() {
-		return ansArray;
+	public String getCorrectAns() {
+		return correctAns;
 	}
-	
 }
