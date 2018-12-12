@@ -25,8 +25,18 @@ public class JeopardyDriver {
 	public static void main(String[] args) throws FileNotFoundException {
 		keyboard = new Scanner(System.in);
     	
-		//Try catch block
-		game = new Board("Questions.txt");
+		try
+		{
+			game = new Board("Questions.txt");
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			usedBoard = true;
+			System.out.println("Question file not found. Please find it and put it in the right place.");
+		}
+		
+		
 		blank = new Question();
 		
 		rules();
