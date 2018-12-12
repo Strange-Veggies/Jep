@@ -22,6 +22,11 @@ public class JeopardyDriver {
 	public static boolean usedBoard = false;
 	public static int used = 0;
 	
+	/**
+	The main method with all the logic
+	@param void
+	@return void
+	*/
 	public static void main(String[] args) throws FileNotFoundException {
 		keyboard = new Scanner(System.in);
     	
