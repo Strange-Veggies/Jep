@@ -101,6 +101,11 @@ public class JeopardyDriver {
 		System.out.println("The person with the highest value is " + winner.getName() + " with $" + winner.getMoney());
 	}
 	
+	/**
+	Gets the cordinates from the user and and deos the error checking
+	@param void
+	@return void
+	*/
 	public static void getCords()
 	{
 		Random ran = new Random();
@@ -133,6 +138,11 @@ public class JeopardyDriver {
 		y = ty;
 	}
 	
+	/**
+	Prints the scoreboard of the current players 
+	@param void
+	@return void
+	*/
 	public static void scoreboard()
 	{
 		String print = "\nScoreboard-\nName\tAmount of money:\n";
@@ -143,8 +153,13 @@ public class JeopardyDriver {
 		System.out.println(print);
 	}
 	
+	/**
+	Gets the answers from the user and and checks the answers, and 
+	@param void
+	@return void
+	*/
 	public static void getAns()
-    {		
+    	{	
 		String out ="";
 		for(int i = 0; i < numOfPlayers; i++)
 		{
@@ -155,7 +170,11 @@ public class JeopardyDriver {
 		}
 		System.out.println(out);
     }
-	
+	/**
+	Gets the names of the players
+	@param void
+	@return void
+	*/
 	public static void userInput()
     {
     	System.out.println("Number of Players");
@@ -171,14 +190,22 @@ public class JeopardyDriver {
 		}
 		
     }
-	
+	/**
+	Prints the rules
+	@param void
+	@return void
+	*/
 	public static void rules()
     {
 		header();
 		System.out.println("Hit -1 enter key -1 enter key to quit");
 		System.out.println("Enter the cordinates of the question you want to play enter question: X enter key Y enter key.");
     }
-	
+	/**
+	Prints a header
+	@param void
+	@return void
+	*/
 	public static void header()
 	{
 		System.out.println("\f");
@@ -196,6 +223,11 @@ public class JeopardyDriver {
 		System.out.println();
 	}
 	
+	/**
+	Finds the player with the most money
+	@param void
+	@return void
+	*/
 	public static Player findHighestValue()
 	{
 		Player winner = null;
