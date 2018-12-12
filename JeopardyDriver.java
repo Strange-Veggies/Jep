@@ -32,16 +32,19 @@ public class JeopardyDriver {
 		
 		catch (FileNotFoundException e)
 		{
-			usedBoard = true;
+			continuePlaying = false;
 			System.out.println("Question file not found. Please find it and put it in the right place.");
 		}
 		
 		
 		blank = new Question();
 		
-		rules();
+		if(continuePlaying == true)
+		{
+			rules();
+			userInput();
+		}
 		
-		userInput();
 		do
 		{
 			System.out.println(game);
@@ -102,7 +105,7 @@ public class JeopardyDriver {
 	{
 		Random ran = new Random();
 		int indexRan =  ran.nextInt(players.length);
-		System.out.println("");
+		System.out.println(players[indexRan] + " choose a question.\n\n");
 		
 		System.out.println("Enter the X cordinate of the question:");
 		int tx = getInt();
