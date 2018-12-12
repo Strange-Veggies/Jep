@@ -98,7 +98,7 @@ public class JeopardyDriver {
 		int tx = getInt();
 		System.out.println("Enter the Y cordinate of the question:");
 		int ty = getInt();
-		if(tx > game.getRow()-1)
+		if(tx > game.getRow()-1 && tx < -1)
 		{
 			while(tx > game.getRow()-1)
 			{
@@ -107,7 +107,7 @@ public class JeopardyDriver {
 			}	
 		}
 		
-		else if(ty > game.getColumn()-1)
+		else if(ty > game.getColumn()-1 && ty < -1)
 		{
 			while(ty > game.getColumn()-1)
 			{
